@@ -1,0 +1,11 @@
+VARIABLE=$1
+TAG=${VARIABLE:-latest}
+
+rm -rf build/
+rm -rf storybook-static/
+
+unzip build.zip
+
+docker build --no-cache -f Dockerfile -t exampleapp:$TAG .
+docker build --no-cache -f Dockerfile.storybook -t examplestorybook:$TAG .
+docker-compose up -d --remove-orphans
