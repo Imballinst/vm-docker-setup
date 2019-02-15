@@ -4,7 +4,7 @@ TAG=${VARIABLE:-latest}
 rm -rf build/
 rm -rf storybook-static/
 
-unzip build.zip
+tar -xzvf build.tar.gz
 
 docker build --no-cache -f Dockerfile -t exampleapp:$TAG .
 docker build --no-cache -f Dockerfile.storybook -t examplestorybook:$TAG .
